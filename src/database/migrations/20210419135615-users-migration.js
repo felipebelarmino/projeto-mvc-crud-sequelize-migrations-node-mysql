@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable("users", {
       id: {
         type: Sequelize.INTEGER,
@@ -24,6 +24,7 @@ module.exports = {
       },
       provider: {
         type: Sequelize.BOOLEAN,
+        defaultValue: false,
         allowNull: false,
       },
       created_at: {
@@ -36,7 +37,13 @@ module.exports = {
       },
     });
   },
-  down: (queryInterface) => {
-    return queryInterface.dropTable("users");
+
+  down: async (queryInterface, Sequelize) => {
+    /**
+     * Add reverting commands here.
+     *
+     * Example:
+     * await queryInterface.dropTable('users');
+     */
   },
 };
