@@ -1,4 +1,3 @@
-// src>app>controllers>UserController.js
 import User from "../models/User";
 
 class UserController {
@@ -10,7 +9,7 @@ class UserController {
 
     // se existir, vou devolver uma mensagem de erro
     if (userExists) {
-      return response.status(400).json({ error: "Usuário já cadastrado!" });
+      return response.status(400).json({ error: "Usuário já existe!" });
     }
 
     const { id, name, email, provider } = await User.create(request.body); // aqui eu poderia fazer a destruturação e pegar dados por dados, mas a minha model já está tratando isso
