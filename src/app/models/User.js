@@ -6,7 +6,7 @@ class User extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        email: Sequelize.STRING,
+        login: Sequelize.STRING,
         password: Sequelize.VIRTUAL, // Virtual quer dizer que ele vai existir só no código e não no banco
         password_hash: Sequelize.STRING,
         provider: Sequelize.BOOLEAN,

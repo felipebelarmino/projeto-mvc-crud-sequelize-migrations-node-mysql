@@ -1,8 +1,10 @@
 "use strict";
 
+const { query } = require("express");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable("users", {
+    return queryInterface.createTable("files", {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -13,23 +15,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      login: {
+      path: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
-      },
-      password_hash: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      provider: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false,
-      },
-      active: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -43,6 +32,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    queryInterface.dropTable("users");
+    queryInterface.dropTable("files");
   },
 };

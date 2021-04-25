@@ -4,8 +4,8 @@ import authConfig from "../../config/auth";
 
 class SessionController {
   async store(request, response) {
-    const { email, password } = request.body;
-    const user = await User.findOne({ where: { email } });
+    const { login, password } = request.body;
+    const user = await User.findOne({ where: { login } });
 
     if (!user) {
       return response.status(401).json({ error: "Usuário não existe" });
@@ -21,7 +21,7 @@ class SessionController {
       user: {
         id,
         name,
-        email,
+        login,
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
@@ -31,3 +31,4 @@ class SessionController {
 }
 
 export default new SessionController();
+
